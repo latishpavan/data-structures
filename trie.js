@@ -30,7 +30,7 @@ class TrieNode {
         }
 
         if(fullWord)
-            return true && currentNode.isEndOfWord;
+            return currentNode.isEndOfWord;
         
         return true;
     }
