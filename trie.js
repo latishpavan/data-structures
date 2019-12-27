@@ -10,7 +10,7 @@ class TrieNode {
         let currentNode = this;
         let childNode;
 
-        for(const letter of key) {
+        for (const letter of key) {
             childNode = currentNode.childNodes.get(letter) || new TrieNode(false);
             currentNode.childNodes.set(letter, childNode);
             currentNode = childNode;
@@ -22,14 +22,14 @@ class TrieNode {
     search(key, fullWord = false) {
         let currentNode = this;
 
-        for(const letter of key) {
+        for (const letter of key) {
             if(currentNode.childNodes.get(letter) === undefined)
                 return false;
             
             currentNode = currentNode.childNodes.get(letter);
         }
 
-        if(fullWord)
+        if (fullWord)
             return currentNode.isEndOfWord;
         
         return true;
@@ -37,7 +37,7 @@ class TrieNode {
 
     static searchDownTheTree(trieNode, wordUpTheTree, matches) {
         trieNode && trieNode.childNodes.forEach((value, alphabet) => {
-            if(value && value.isEndOfWord) {
+            if (value && value.isEndOfWord) {
                 matches.push(wordUpTheTree + alphabet);
             }
 
@@ -49,7 +49,7 @@ class TrieNode {
         const matches = [];
         let currentNode = this;
 
-        for(const letter of key) {
+        for (const letter of key) {
             if(currentNode.childNodes.get(letter) === undefined)
                 return matches;
             
