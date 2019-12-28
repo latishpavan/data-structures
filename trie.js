@@ -1,8 +1,6 @@
-const zip = require('./utils').zip;
-
 class TrieNode {
-    constructor(isEndOfWord, length = 26) {
-        this.childNodes = new Map(zip(Array.from('abcdefghijklmnopqrstuvwxyz'), new Array(length)));
+    constructor(isEndOfWord) {
+        this.childNodes = new Map();
         this.isEndOfWord = isEndOfWord;
     }
 
@@ -62,8 +60,8 @@ class TrieNode {
 }
 
 const trieNode = new TrieNode(false);
-trieNode.insert('latish');
+trieNode.insert('latish is some');
 trieNode.insert('laa');
 trieNode.insert('lapavan');
 trieNode.insert('latishpavan');
-console.log(trieNode.getAllMatches('la'));
+console.log(trieNode.getAllMatches('latish '));
