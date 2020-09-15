@@ -78,9 +78,6 @@ class TwoDimensionalTree(object):
         self.root = root
 
     def _insert_helper(self, curr_node: TwoDimensionalTreeNode, new_node: TwoDimensionalTreeNode, level: int):
-        if curr_node is None:
-            return
-
         curr_split = level % self.k
 
         if curr_node.value[curr_split] > new_node.value[curr_split]:
@@ -92,7 +89,7 @@ class TwoDimensionalTree(object):
             if curr_node.right is None:
                 curr_node.right = new_node
             else:
-                self._insert_helper(new_node.right, new_node, level + 1)
+                self._insert_helper(curr_node.right, new_node, level + 1)
 
     def insert(self, point: Point):
         node = TwoDimensionalTreeNode(point)
